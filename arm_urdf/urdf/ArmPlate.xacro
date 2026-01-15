@@ -171,6 +171,18 @@
             </geometry>
         </collision>
     </link>
+    <link name="grasp_frame">
+        <visual name="sphere">
+            <geometry>
+                <sphere radius="0.01"/>
+            </geometry>
+        </visual>
+    </link>
+    <joint name="grasp_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.125" rpy="0.0 0.0 0.0" />
+        <parent link="gripperHousing-v2" />
+        <child link="grasp_frame" />
+    </joint>
     <joint name="Base_link1-v1_Revolute-1" type="continuous">
         <origin xyz="-0.05188764 -0.052144760000000005 0.01" rpy="3.141592653589793 -0.0 0.0" />
         <parent link="Base_link1-v1" />
