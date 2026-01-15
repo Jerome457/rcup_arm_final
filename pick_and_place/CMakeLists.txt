@@ -7,6 +7,25 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+# Add these dependencies
+find_package(moveit_ros_planning_interface REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(shape_msgs REQUIRED)  # Recent addition
+# find_package(robo_moveit_config REQUIRED)
+find_package(sensor_msgs REQUIRED) # Very Recent Addition
+find_package(moveit_task_constructor_core REQUIRED)
+find_package(moveit_ros_planning REQUIRED)
+find_package(arm_message REQUIRED)
+
+add_executable(mtc_tutorial src/mtc.cpp)
+
+ament_target_dependencies(mtc_tutorial moveit_task_constructor_core rclcpp arm_message)
+
+install(DIRECTORY launch DESTINATION share/${PROJECT_NAME}/)
+install(TARGETS mtc_tutorial DESTINATION lib/${PROJECT_NAME})
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)

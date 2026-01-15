@@ -18,8 +18,8 @@ moveit_simple_controller_manager:
       - 5thDof_mnt-v2_Revolute-11
       - 6Thdof-v2_Revolute-12
   hand_controller:
-    type: FollowJointTrajectory
-    action_ns: follow_joint_trajectory
+    type: GripperCommand
     joints:
       - gripperHousing-v2_Slider-13
-      - gripperHousing-v2_Slider-14
+    action_ns: gripper_cmd
+    default: true

@@ -97,6 +97,18 @@ def generate_launch_description():
         parameters=[moveit_config.to_dict(), ros2_controllers_path],
         output="both",
     )
+
+    moveit_config_2 = MoveItConfigsBuilder("ArmPlate",package_name="arm_urdf_moveit_config").to_dict()
+
+    # MTC Demo node
+    pick_place_demo = Node(
+        package="pick_and_place",
+        executable="mtc_tutorial",
+        output="screen",
+        parameters=[
+            moveit_config_2,
+        ],
+    )
     # Load controllers
     load_controllers = []
     for controller in [
@@ -118,8 +130,9 @@ def generate_launch_description():
             # static_tf,
             robot_state_publisher,
             run_move_group_node,
-            spawn_the_robot,
+            # spawn_the_robot,
             ros2_control_node,
+            pick_place_demo,
         ]
         + load_controllers
     )

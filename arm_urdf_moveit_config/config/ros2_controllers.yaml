@@ -8,7 +8,7 @@ controller_manager:
 
 
     hand_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
+      type: position_controllers/GripperActionController
 
 
     joint_state_broadcaster:
@@ -16,7 +16,7 @@ controller_manager:
 
 arm_controller:
   ros__parameters:
-    action_ns: follow_joint_trajectory
+    acrion_ns: follow_joint_trajectory
     joints:
       - Base_link1-v1_Revolute-1
       - 2ndDOFDDD-v1_Revolute-8
@@ -31,12 +31,5 @@ arm_controller:
       - velocity
 hand_controller:
   ros__parameters:
-    action_ns: follow_joint_trajectory
-    joints:
-      - gripperHousing-v2_Slider-13
-      - gripperHousing-v2_Slider-14
-    command_interfaces:
-      - position
-    state_interfaces:
-      - position
-      - velocity
+    acrion_ns: gripper_cmd
+    joint: gripperHousing-v2_Slider-13

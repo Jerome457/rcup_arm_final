@@ -1,5 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <robot name="ArmPlate">
+    <link name="world"/>
+    <joint name="base_to_world" type="fixed">
+        <parent link="world" />
+        <child link="Base_link1-v1" />   
+    </joint>
     <link name="Base_link1-v1">
         <inertial>
             <origin xyz="-0.0674024747578498 -0.052144759691377905 0.001871879485998631" rpy="0.0 0.0 0.0" />
@@ -224,13 +229,14 @@
         <parent link="gripperHousing-v2" />
         <child link="left_H-v1" />
         <axis xyz="1.0132025937202353e-16 0.077572 0.996987" />
-        <limit lower="-0.11" upper="-0.07" effort="1000000" velocity="1000000" />
+        <limit upper="0.07" lower="-0.04" effort="10" velocity="10" />
     </joint>
     <joint name="gripperHousing-v2_Slider-14" type="prismatic">
         <origin xyz="0.049694190000000006 0.0058725799999999944 0.07300000000000012" rpy="-3.141592653589793 -1.5707963267948941 0" />
         <parent link="gripperHousing-v2" />
         <child link="right_H-v1" />
         <axis xyz="2.0264051874404916e-16 -0.077572 0.996987" />
-        <limit lower="-0.11" upper="-0.07" effort="1000000" velocity="1000000" />
+        <limit upper="0.07" lower="-0.04" effort="10" velocity="10" />
+        <mimic joint="gripperHousing-v2_Slider-13" />
     </joint>
 </robot>
