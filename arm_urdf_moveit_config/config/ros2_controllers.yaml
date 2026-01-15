@@ -1,0 +1,42 @@
+# This config file is used by ros2_control
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    hand_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+arm_controller:
+  ros__parameters:
+    action_ns: follow_joint_trajectory
+    joints:
+      - Base_link1-v1_Revolute-1
+      - 2ndDOFDDD-v1_Revolute-8
+      - lnk1assm-v2_Revolute-9
+      - lnk2_assm-v2_Revolute-10
+      - 5thDof_mnt-v2_Revolute-11
+      - 6Thdof-v2_Revolute-12
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+hand_controller:
+  ros__parameters:
+    action_ns: follow_joint_trajectory
+    joints:
+      - gripperHousing-v2_Slider-13
+      - gripperHousing-v2_Slider-14
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
