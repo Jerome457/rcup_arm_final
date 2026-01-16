@@ -31,6 +31,14 @@
         <joint name="lnk1assm-v2_Revolute-9" value="0"/>
         <joint name="lnk2_assm-v2_Revolute-10" value="0"/>
     </group_state>
+    <group_state name="place" group="arm">
+        <joint name="2ndDOFDDD-v1_Revolute-8" value="0.6769"/>
+        <joint name="5thDof_mnt-v2_Revolute-11" value="-1.1282"/>
+        <joint name="6Thdof-v2_Revolute-12" value="0"/>
+        <joint name="Base_link1-v1_Revolute-1" value="0.0174"/>
+        <joint name="lnk1assm-v2_Revolute-9" value="1.3017"/>
+        <joint name="lnk2_assm-v2_Revolute-10" value="0.0174"/>
+    </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="hand" parent_link="grasp_frame" group="hand"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->

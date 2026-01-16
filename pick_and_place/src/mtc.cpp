@@ -298,7 +298,7 @@ task.add(std::move(stage_move_to_pick));
                             Eigen::AngleAxisd(-M_PI/2, Eigen::Vector3d::UnitY()) *
                             Eigen::AngleAxisd(0.0, Eigen::Vector3d::UnitZ());
         grasp_frame_transform.linear() = q.matrix();
-        grasp_frame_transform.translation() = Eigen::Vector3d(0.0, -0.02, 0.0);
+        grasp_frame_transform.translation() = Eigen::Vector3d(0.0, 0.0, 0.0);
         // Compute IK
         auto wrapper =
             std::make_unique<mtc::stages::ComputeIK>("grasp pose IK", std::move(stage));
@@ -313,11 +313,11 @@ task.add(std::move(stage_move_to_pick));
       {
         auto stage =
             std::make_unique<mtc::stages::ModifyPlanningScene>("allow collision (soft_fingers,object)");
-        stage->allowCollisions("object", "Soft_finger_1", true);
-        stage->allowCollisions("object", "soft_finger_2", true);
-        stage->allowCollisions("object", "firstDOF_final", true);
-        stage->allowCollisions("firstDOF_final", "Soft_finger_1", true);
-        stage->allowCollisions("firstDOF_final", "soft_finger_2", true);
+        stage->allowCollisions("object", "right_H-v1", true);
+        stage->allowCollisions("object", "left_H-v1", true);
+        // stage->allowCollisions("object", "firstDOF_final", true);
+        // stage->allowCollisions("firstDOF_final", "Soft_finger_1", true);
+        // stage->allowCollisions("firstDOF_final", "soft_finger_2", true);
         stage->allowCollisions("object", "<octomap>", true);
         grasp->insert(std::move(stage));
       }
@@ -359,7 +359,7 @@ task.add(std::move(stage_move_to_pick));
     {
       auto stage_move_to_place = std::make_unique<mtc::stages::MoveTo>("place pose", sampling_planner);
       stage_move_to_place->setGroup(arm_group_name);
-      stage_move_to_place->setGoal("place1");
+      stage_move_to_place->setGoal("place");
       stage_move_to_place->setTimeout(100.0);
       task.add(std::move(stage_move_to_place));
     }
@@ -372,8 +372,8 @@ task.add(std::move(stage_move_to_pick));
     {
       auto stage =
           std::make_unique<mtc::stages::ModifyPlanningScene>("forbid collision (hand,object)");
-      stage->allowCollisions("object", "Soft_finger_1", false);
-      stage->allowCollisions("object", "soft_finger_2", false);
+      stage->allowCollisions("object", "right_H-v1", false);
+      stage->allowCollisions("object", "left_H-v1", false);
       task.add(std::move(stage));
     }
 
