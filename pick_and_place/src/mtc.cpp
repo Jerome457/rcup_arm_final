@@ -193,7 +193,7 @@ void MTCTaskNode::doTask()
     return;
   }
 
-  if (!task_.plan(4))
+  if (!task_.plan(2))
   {
     RCLCPP_ERROR_STREAM(LOGGER, "Task planning failed");
     e=1;
